@@ -1,0 +1,273 @@
+/* INFO WINDOW STYLES */
+.info-window-wrapper {
+	background: #FFF;
+	border: 2px solid #AAA;
+	width: auto;
+	height: auto;
+	position: absolute;
+	padding-bottom: 15px;
+	border-radius: 8px;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+	box-shadow: 2px 2px 6px #BBB;
+	-moz-box-shadow: 2px 2px 6px #BBB;
+	-webkit-box-shadow: 2px 2px 6px #BBB;
+}
+.info-window-wrapper:hover {
+	box-shadow: 2px 2px 6px #777;
+	-moz-box-shadow: 2px 2px 6px #777;
+	-webkit-box-shadow: 2px 2px 6px #777;
+}
+.info-window-content {
+	display: block;
+	cursor: auto;
+	padding: 15px;
+	margin: 5px;
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+.infobox-title {
+	display: block;
+	padding: 10px 19px;
+	border-bottom: 1px dotted #AAA;
+	color: #666;
+    background-color: #EEE;
+    background-image: -moz-linear-gradient(100% 100% 90deg, #EEEEEE, #FFFFEE);
+    background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#FFFFEE), to(#EEEEEE));
+    background-image: -o-linear-gradient(#EEEEEE,#FFFFEE);
+	font-size: 16px;
+	font-size: 1.6rem;
+	font-weight: bold;
+	border-radius: 8px 8px 0 0;
+    -moz-border-radius: 8px 8px 0 0;
+    -webkit-border-radius: 8px 8px 0 0;
+}
+.infobox-title a {
+	font-size: 16px;
+	font-size: 1.6rem;
+	font-weight: bold;
+	color: #666;
+	text-decoration: none;
+}
+.close-icon {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	cursor: pointer;
+}
+
+/* CSS ARROW - ATTACHED TO INFOWINDOW */
+.info-window-wrapper:before {
+	content: "";
+	position: absolute;
+	width: 0;
+	height: 0;
+	border-top: 25px solid transparent;
+	border-bottom: 25px solid transparent;
+	border-right: 25px solid #AAA;
+	top: 55px;
+	left: -25px;
+}
+.info-window-wrapper:after {
+	content: "";
+	position: absolute;
+	width: 0;
+	height: 0;
+	border-top: 22px solid transparent;
+	border-bottom: 22px solid transparent;
+	border-right: 23px solid #FFF;
+	top: 58px;
+	left: -23px;
+}
+.info-window-content p {
+	display: block;
+	padding: 5px 0 10px;
+	text-align: justify;
+}
+
+/* REALLY BASIC RESET */
+body { font:13px/1.231 sans-serif; *font-size:small; } /* Hack retained to preserve specificity */
+html { font-size: 62.5%; }
+body { font-size: 14px; font-size: 1.4rem; } /* =14px */
+body, div { margin: 0; padding: 0; }
+body { width: 100%; height: 100%; overflow: hidden; }
+
+/* DEMO PAGE STYLES */
+#header {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 28px;
+	border-bottom: 2px solid #000;
+	background: #444;
+	color: #EEE;
+	width: 100%;
+	text-align: right;
+}
+#header h1 {
+	font-size: 12px;
+	font-size: 1.2rem;
+	padding-left: 1%;
+	width: 48%;
+	display: inline-block;
+}
+#header .social-media-links {
+	font-size: 12px;
+	font-size: 1.2rem;
+	padding-right: 1%;
+	width: 48%;
+	display: inline-block;
+	vertical-align: top;
+	text-align: right;
+}
+#header .social-media-links a {
+	color: #EEE;
+	text-decoration: none;
+	padding: 0 2px;
+}
+#map-wrapper {
+	position: absolute;
+	top: 30px;
+	bottom: 0;
+	height: auto;
+	width: 100%;
+}
+#gspot {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+#gspot-top-left,
+#gspot-top-right,
+#gspot-bottom-left,
+#gspot-bottom-right {
+	width: 50%;
+	height: 50%;
+	position: absolute;
+}
+#gspot-top-right {
+	left: 50%;
+}
+#gspot-bottom-left {
+	top: 50%;
+}
+#gspot-bottom-right {
+	top: 50%;
+	left: 50%;
+}
+#gspot-top-left,
+#gspot-bottom-left {
+	border-right: 1px solid #444;
+}
+#gspot-bottom-left,
+#gspot-bottom-right {
+	border-top: 1px solid #444;
+}
+.info-window-content code {
+	background: #FFFFEE;
+	padding: 5px;
+	display: block;
+	border: 1px dotted #CCC;
+	margin: 5px 0;
+}
+
+/* SOCIAL-MEDIA LINKS */
+.social-media-links {
+	padding-top: 3px;
+}
+.social-media-links h2 {
+	display: inline-block;
+	width: auto;
+	font-size: 12px;
+	font-size: 1.2rem;
+	float: left;
+	margin: 4px 0 0 2px;
+	text-transform: uppercase;
+	color: #BBB;
+}
+.social-media-links a {
+    position: relative;
+	float: right;
+    width: 20px;
+    height: 20px;
+    background-image: url('../img/social-media-icons.png');
+    background-repeat: no-repeat;
+    text-indent: 999em;
+    margin: 1px 0 0 5px;
+	white-space: nowrap;
+	display: inline-block;
+	outline: 0;
+}
+.social-media-links a.twitter {
+    background-position: -5px -33px;
+}
+.social-media-links a.facebook {
+    background-position: -33px -33px;
+}
+.social-media-links a.rss {
+    background-position: -61px -33px;
+}
+.social-media-links a.email {
+    background-position: -89px -33px;
+}
+.social-media-links a.linkedin {
+    background-position: -117px -33px;
+}
+.social-media-links a.wordpress {
+    background-position: -145px -33px;
+}
+.social-media-links a.ohloh {
+    background-position: -163px -33px;
+}
+.social-media-links a.twitter:hover {
+    background-position: -5px -5px;
+}
+.social-media-links a.facebook:hover {
+    background-position: -33px -5px;
+}
+.social-media-links a.rss:hover {
+    background-position: -61px -5px;
+}
+.social-media-links a.email:hover {
+    background-position: -89px -5px;
+}
+.social-media-links a.linkedin:hover {
+    background-position: -117px -5px;
+}
+.social-media-links a.wordpress:hover {
+    background-position: -145px -5px;
+}
+.social-media-links a.ohloh:hover {
+    background-position: -163px -5px;
+}
+
+/* GITHUB RIBBON */
+.git-ribbon {
+	background-color: #a00;
+	overflow: hidden;
+	position: absolute;
+	left: -3em;
+	top: 2.5em;
+	-moz-transform: rotate(-45deg);
+	-webkit-transform: rotate(-45deg);
+	-o-transform: rotate(-45deg);
+	-ms-transform: rotate(-45deg);
+	-moz-box-shadow: 0 0 4px #888;
+	-webkit-box-shadow: 0 0 4px #888;
+	z-index: 999;
+	filter: progid:DXImageTransform.Microsoft.Matrix(sizingMethod='auto expand', M11=0.7071067811865476, M12=0.7071067811865476, M21=-0.7071067811865475, M22=0.7071067811865475); /* IE6,IE7 */
+	-ms-filter: "progid:DXImageTransform.Microsoft.Matrix(SizingMethod='auto expand', M11=0.7071067811865476, M12=0.7071067811865476, M21=-0.7071067811865475, M22=0.7071067811865475)"; /* IE8 */
+}
+.git-ribbon a {
+	border: 1px solid #faa;
+	color: #fff;
+	display: block;
+	margin: 0.05em 0;
+	padding: 0.5em 3.5em;
+	text-align: center;
+	text-decoration: none;
+	white-space: nowrap;
+	text-shadow: 0 0 1px #444;
+}
