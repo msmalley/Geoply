@@ -16,7 +16,7 @@ else $lng = 101.712624;
 
 $query = array(
 	'col'	=> 'geonames',
-	'limit'	=> 500,
+	'limit'	=> 100,
 	'near'	=> array( $lng, $lat )
 );
 $results = $db->find($query);
@@ -29,7 +29,8 @@ if((isset($results))&&(is_array($results))){
 		$marker_info['content'] = '<pre>'.print_r($result,true).'</pre>';
 		$marker_info['this_id'] = $db->_id($result['_id']);
 		$marker_info['slug'] = '?id='.$db->_id($result['_id']);
-		$marker_info['open'] = false;
+		if(count($markers)<1) $marker_info['open'] = true;
+		else $marker_info['open'] = false;
 		$markers[] = $marker_info;
 	}
 }

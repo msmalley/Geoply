@@ -7,8 +7,13 @@
 * Out of the box marker clustering and customized InfoWindows
 * A heap of exciting things to come, including polygons and layers
 
-# Getting Started:
-More information available soon!
+# Installation Instructions:
+1) Ensure MongoDB and Mongo PHP Drivers Working
+2) Extract contents of /db/geonames.zip
+3) Stop mongoDB server
+4) Add geo.0 - geo.ns files to data/db
+5) Restart mongoDB server
+6) Visit root index
 
 # See it in Action:
 Demo at [http://geoply.com/](http://geoply.com/)
