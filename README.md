@@ -8,12 +8,12 @@
 * A heap of exciting things to come, including polygons and layers
 
 # Installation Instructions:
-1) Ensure MongoDB and Mongo PHP Drivers Working
-2) Extract contents of /db/geonames.zip
-3) Stop mongoDB server
-4) Add geo.0 - geo.ns files to data/db
-5) Restart mongoDB server
-6) Visit root index
+* Ensure MongoDB and Mongo PHP Drivers Working
+* Extract contents of /db/geonames.zip
+* Stop mongoDB server
+* Add geo.0 - geo.ns files to data/db
+* Restart mongoDB server
+* Visit root index
 
 # See it in Action:
 Demo at [http://geoply.com/](http://geoply.com/)
