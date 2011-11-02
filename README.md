@@ -1,5 +1,5 @@
 * Geoply is a MongoDB-Based Geo-Location Toolkit
-* Includes 700MB+ DB, MongoBase and gSpot
+* Includes 1GB+ DB, MongoBase and gSpot
 * Follow [Mark on Twitter](http://twitter.com/m_smalley) for more updates
 
 # The Basic Features:
