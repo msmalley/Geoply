@@ -10,13 +10,14 @@ require_once(__DIR__.'/mb/classes/mb_db.class.php'); // Required for MongoDB Con
 $db = new MONGOBASE_DB; // Assign the DB
 
 if(isset($_POST['lat'])) $lat = (float)$_POST['lat'];
-else $lat = 3.152864;
+else $lat = 3.152864; // These defaults represent KL MUG HQ
 if(isset($_POST['lng'])) $lng = (float)$_POST['lng'];
-else $lng = 101.712624;
+else $lng = 101.712624; // These defaults represent KL MUG HQ
+// More information on KL MUG - http://lauli.ma/klmug
 
 $query = array(
 	'col'	=> 'geonames',
-	'limit'	=> 100,
+	'limit'	=> 500,
 	'near'	=> array( $lng, $lat )
 );
 $results = $db->find($query);
