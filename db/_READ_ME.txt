@@ -1,8 +1,8 @@
 This folder contains a copy of the GeoNames database as a MongoDB Collection
 
-1) Extract zip file
+1) Extract contents of /db/geonames.zip
 2) Stop mongoDB server
-3) Add geo files to data/db
+3) Add geo.0 - geo.ns files to data/db
 4) Restart mongoDB server
 5) Visit root index
 
