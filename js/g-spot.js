@@ -307,6 +307,7 @@
 			/* ESTABLISH ACTIONS */
 			function removeInfoBox(ib) {
 				return function() {
+					//this_box = remove_infobox(this_box);
 					ib.setMap(null);
 				};
 			}
@@ -361,7 +362,7 @@
 		this.boundsChangedListener_ = null;
 	}
 
-	function construct_infobox(this_id,map_id,opts,this_url,title,content){
+	function construct_infobox(this_id,map_id,opts,this_url,title,content,open_only){
 		info_box[map_id][this_id] = function(map_id,opts){
 			create_infobox(this,map_id,opts,this_id);
 		}
@@ -378,11 +379,20 @@
 		info_box[map_id][this_id].prototype.panMap = function() {
 			pan_infobox(this);
 		};
-		new_info_box[map_id] = [];
-		new_info_box[map_id][this_id] = new info_box[map_id][this_id](
-			map_id,
-			{latlng: marker[map_id][this_id].getPosition(), map: marker[map_id][this_id].map}
-		);
+		if(open_only){
+			new_info_box[map_id] = [];
+			new_info_box[map_id][this_id] = null;
+			new_info_box[map_id][this_id] = new info_box[map_id][this_id](
+				map_id,
+				{latlng: marker[map_id][this_id].getPosition(), map: marker[map_id][this_id].map}
+			);
+		}else{
+			new_info_box[map_id] = [];
+			new_info_box[map_id][this_id] = new info_box[map_id][this_id](
+				map_id,
+				{latlng: marker[map_id][this_id].getPosition(), map: marker[map_id][this_id].map}
+			);
+		}
 	}
 
 	/* MARKER FUNCTIONS */
@@ -428,14 +438,43 @@
 		}
 		google.maps.event.addListener(marker[map_id][this_id], "click", function(e) {
 			if(!info_box[map_id][this_id]){
-				construct_infobox(
-					this_id,
-					map_id,
-					{latlng: marker[map_id][this_id].getPosition(), map: marker[map_id][this_id].map},
-					this_url,
-					title,
-					content
-				);
+				if(new_info_box[map_id][this_id]){
+					if(new_info_box[map_id][this_id]['div_']===null){
+						construct_infobox(
+							this_id,
+							map_id,
+							{latlng: marker[map_id][this_id].getPosition(), map: marker[map_id][this_id].map},
+							this_url,
+							title,
+							content,
+							false
+						);
+					}
+				}else{
+					construct_infobox(
+						this_id,
+						map_id,
+						{latlng: marker[map_id][this_id].getPosition(), map: marker[map_id][this_id].map},
+						this_url,
+						title,
+						content,
+						false
+					);
+				}
+			}else{
+				if(new_info_box[map_id][this_id]){
+					if(new_info_box[map_id][this_id]['div_']===null){
+						construct_infobox(
+							this_id,
+							map_id,
+							{latlng: marker[map_id][this_id].getPosition(), map: marker[map_id][this_id].map},
+							this_url,
+							title,
+							content,
+							true
+						);
+					}
+				}
 			}
 		});
 		marker_count++;

@@ -183,7 +183,8 @@ class MONGOBASE_DB extends MONGOBASE {
 			'order_by'	=> false,
 			'order'		=> false,
 			'id'		=> false,
-			'near'		=> false
+			'near'		=> false,
+			'distance'	=> 100
 		);
 		$settings = $this->settings($args,$defaults);
 
@@ -208,20 +209,14 @@ class MONGOBASE_DB extends MONGOBASE {
 		try{
 
 			if(isset($settings['near'])){
-				$maximum_distance = 100;
-				//$collection = $dbh->$settings['col'];
-				//$results = $this->arrayed($collection->find($settings['where'])->sort($sort_clause)->skip($settings['offset'])->limit($settings['limit']));
 
-				$geo_near_query = array('geoNear'=>$settings['col'],'near'=>$settings['near'],'$spherical'=>true,'$maxDistance'=>$maximum_distance/6378,'num'=>$settings['limit']);
-				//$geo_near_query = array('geoNear'=>$settings['col'],'near'=>$settings['near'],'num'=>$settings['limit']);
+				$geo_near_query = array('geoNear'=>$settings['col'],'near'=>$settings['near'],'$spherical'=>true,'$maxDistance'=>$settings['distance']/6378,'num'=>$settings['limit']);
 				$geo_results = $dbh->command($geo_near_query);
 				foreach($geo_results['results'] as $result){
                     if(is_array($result['obj'])){
                         $temp_geo_results[] = $result['obj'];
                     }
                 } $results = $temp_geo_results;
-				//return $dbh->command($geo_near_query);
-				//$results = $this->arrayed($collection->find(array('loc'=>array('$near'=>array())))->sort($sort_clause)->skip($settings['offset'])->limit($settings['limit']));
 				return $results;
 
 			}elseif(is_array($settings['col'])){

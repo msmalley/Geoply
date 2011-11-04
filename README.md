@@ -3,9 +3,9 @@
 * Follow [Mark on Twitter](http://twitter.com/m_smalley) for more updates
 
 # The Basic Features:
-* 7 Million + Geo-Spatially Indexed MongoDB Places
+* 7.9 Million + Geo-Spatially Indexed MongoDB Places
 * Out of the box marker clustering and customized InfoWindows
-* A heap of exciting things to come, including polygons and layers
+* A heap of exciting things to come, including OSM, polygons and layers
 
 # Installation Instructions:
 * Ensure MongoDB and Mongo PHP Drivers Working
