@@ -61,9 +61,8 @@
 		adhoc_icon = $(map_container).attr('data-icon');
 		adhoc_content = $(map_container).html();
 
-		ajax = $(map_container).attr('data-ajax');
-
 		check_markers = this.options.check_markers;
+		ajax = $(map_container).attr('data-ajax');
 
 		if(((adhoc_zoom!==null)&&(adhoc_zoom!==false)&&((!this.options.zoom))||(($(map_container).attr('data-override')=='true')&&(adhoc_zoom)))){
 			this.options.zoom = adhoc_zoom;
@@ -277,7 +276,7 @@
 		if(this_box.div_){
 			this_box.div_.parentNode.removeChild(this_box.div_);
 			this_box.div_ = null;
-			info_box[this_box.mongo_id] = null;
+			//info_box[this_box.mongo_id] = null;
 		}
 	}
 
@@ -493,6 +492,16 @@
 							true
 						);
 					}
+				}else{
+					construct_infobox(
+						this_id,
+						map_id,
+						{latlng: marker[map_id][this_id].getPosition(), map: marker[map_id][this_id].map},
+						this_url,
+						title,
+						content,
+						true
+					);
 				}
 			}
 		});

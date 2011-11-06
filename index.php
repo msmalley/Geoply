@@ -20,7 +20,7 @@
 
 		/* OPTIONS */
 		options = {
-            zoom: 13, // This allows you to select a zoom level
+            zoom: 17, // This allows you to select a zoom level
 			type: 'ROADMAP', // This allows you to pick the tap of map to use
 			lat: false, // This is a custom coordinate to use for centering map, otherwise browser attempts to use HTML5 to find current location
 			lng: false, // This is a custom coordinate to use for centering map, otherwise browser attempts to use HTML5 to find current location
