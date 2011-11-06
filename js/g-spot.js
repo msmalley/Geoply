@@ -419,7 +419,6 @@
 		if(icon) this_marker = icon;
 		else this_marker = default_marker;
 		this_marker = image_base+'/'+this_marker;
-		console.log(check_markers);
 		if(check_markers===true){
 			if(url_exists(this_marker)!==true) this_marker = image_base+'/'+default_marker;
 		}
