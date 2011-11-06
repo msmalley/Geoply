@@ -44,7 +44,11 @@ if((isset($results))&&(is_array($results))){
 			$marker_info['content'] = '<pre>'.print_r($result,true).'</pre>';
 			$marker_info['this_id'] = $db->_id($result['_id']);
 			$marker_info['slug'] = '?id='.$db->_id($result['_id']);
-			$marker_info['icon'] = $result['feature_code'].'.png';
+			if(file_exists(__DIR__.'/img/'.$result['feature_code'].'.png')){
+				$marker_info['icon'] = $result['feature_code'].'.png';
+			}else{
+				$marker_info['icon'] = false;
+			}
 			if(count($markers)<1) $marker_info['open'] = true;
 			else $marker_info['open'] = false;
 			$markers[] = $marker_info;
