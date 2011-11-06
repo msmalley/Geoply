@@ -1,4 +1,4 @@
-/* gSpot Version 1.0.1 - by Mark Smalley - http://www.smalley.my */
+/* gSpot Version 1.0.2 - by Mark Smalley - http://www.smalley.my */
 /* Mark Smalley on GitHub - https://github.com/msmalley */
 ;(function ( $, window, document, undefined ) {
 
