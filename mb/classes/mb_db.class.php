@@ -275,4 +275,20 @@ class MONGOBASE_DB extends MONGOBASE {
 		}
 	}
 
+	public function distinct($args = false) {
+
+		$defaults = array(
+			'col'		=> 'mbsert',
+			'where'		=> array(),
+			'criteria'	=> false
+		);
+		$settings = $this->settings($args,$defaults);
+
+		if(!$this->is_connected) $this->connect();
+		$dbh = $this->dbh;
+		$objects = $dbh->command(array("distinct"=>$settings['col'],'key'=>$settings['criteria'],'query'=>$settings['where']));
+		return $objects;
+
+	}
+
 }

@@ -4,6 +4,12 @@ $markers = array();
 
 define('MONGODB_NAME', 'geo');
 
+if(isset($_GET['limit'])) $limit = (int)$_GET['limit'];
+else $limit = 500;
+
+if(isset($_GET['feature_code'])) $feature_code = $_GET['feature_code'];
+else $feature_code = false;
+
 require_once(__DIR__.'/mb/classes/mb_base.class.php'); // The one file to rule them all
 require_once(__DIR__.'/mb/classes/mb_db.class.php'); // Required for MongoDB Connections
 
@@ -17,22 +23,32 @@ else $lng = 101.712624; // These defaults represent KL MUG HQ
 
 $query = array(
 	'col'	=> 'geonames',
-	'limit'	=> 500,
+	'limit'	=> $limit,
 	'near'	=> array( $lng, $lat )
 );
 $results = $db->find($query);
 
 if((isset($results))&&(is_array($results))){
 	foreach($results as $result){
-		$marker_info['lat'] = $result['loc']['lat'];
-		$marker_info['lng'] = $result['loc']['lng'];
-		$marker_info['title'] = $result['name'];
-		$marker_info['content'] = '<pre>'.print_r($result,true).'</pre>';
-		$marker_info['this_id'] = $db->_id($result['_id']);
-		$marker_info['slug'] = '?id='.$db->_id($result['_id']);
-		if(count($markers)<1) $marker_info['open'] = true;
-		else $marker_info['open'] = false;
-		$markers[] = $marker_info;
+		$continue = true;
+		if($feature_code){
+			if($feature_code==$result['feature_code']){
+				$continue = true;
+			}else{
+				$continue = false;
+			}
+		} if($continue){
+			$marker_info['lat'] = $result['loc']['lat'];
+			$marker_info['lng'] = $result['loc']['lng'];
+			$marker_info['title'] = $result['name'];
+			$marker_info['content'] = '<pre>'.print_r($result,true).'</pre>';
+			$marker_info['this_id'] = $db->_id($result['_id']);
+			$marker_info['slug'] = '?id='.$db->_id($result['_id']);
+			$marker_info['icon'] = $result['feature_code'].'.png';
+			if(count($markers)<1) $marker_info['open'] = true;
+			else $marker_info['open'] = false;
+			$markers[] = $marker_info;
+		}
 	}
 }
 

@@ -9,7 +9,8 @@
 			lat: false,
 			lng: false,
 			imgs: 'img',
-			markers: false
+			markers: false,
+			check_markers: true
         };
 
 	/* GSPOT GLOBALS */
@@ -28,6 +29,7 @@
 	var map_container;
 	var current_lat = false;
 	var current_lng = false;
+	var check_markers = true;
 
     /* ----------------------- */
 	/* jQuery Construct Method */
@@ -60,6 +62,8 @@
 		adhoc_content = $(map_container).html();
 
 		ajax = $(map_container).attr('data-ajax');
+
+		check_markers = this.options.check_markers;
 
 		if(((adhoc_zoom!==null)&&(adhoc_zoom!==false)&&((!this.options.zoom))||(($(map_container).attr('data-override')=='true')&&(adhoc_zoom)))){
 			this.options.zoom = adhoc_zoom;
@@ -240,6 +244,16 @@
 		map.setCenter(map_position);
 	}
 
+	function url_exists(url){
+		var http = new XMLHttpRequest();
+		http.open('HEAD', url, false);
+		http.send();
+		this_status = false;
+		if(http.status!=404&&http.status!=403) this_status = true;
+		else this_status = false;
+		return this_status;
+	}
+
 	/* INFOWINDOW FUNCTIONS */
 
 	function create_infobox(this_box,map_id,opts,this_id){
@@ -402,9 +416,15 @@
 		var this_url = slug;
 		var default_marker = 'default_marker.png';
 		var default_shadow = 'shadow.png';
-		if(icon) default_marker = icon;
+		if(icon) this_marker = icon;
+		else this_marker = default_marker;
+		this_marker = image_base+'/'+this_marker;
+		console.log(check_markers);
+		if(check_markers===true){
+			if(url_exists(this_marker)!==true) this_marker = image_base+'/'+default_marker;
+		}
 		var image = new google.maps.MarkerImage(
-			image_base+'/'+default_marker,
+			this_marker,
 			new google.maps.Size(26,26),
 			new google.maps.Point(0,0),
 			new google.maps.Point(13,13)
