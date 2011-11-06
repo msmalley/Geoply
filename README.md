@@ -9,7 +9,7 @@
 
 # Advanced and Newly Introduced Features:
 * Ability to have custom icons per marker
-* Use of GeoNames feature_code for icon (3 codes currently supported)
+* Use of GeoNames feature_code for icon (5 codes currently supported)
 * Function for checking if icon exists, else show default icon
 * Query from the URL, with current variables including (limit and feature_code)
 
