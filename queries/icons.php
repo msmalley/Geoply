@@ -34,8 +34,6 @@ if(isset($_POST['lng'])) $lng = (float)$_POST['lng'];
 else $lng = 101.712624; // These defaults represent KL MUG HQ
 // More information on KL MUG - http://lauli.ma/klmug
 
-$i = 0;
-
 foreach($available_codes as $code => $icon){
 
 	$query = array(
@@ -66,14 +64,12 @@ foreach($available_codes as $code => $icon){
 						$marker_info['content'] = '<pre>'.print_r($result,true).'</pre>';
 					}
 					$marker_info['icon'] = $icon;
-					$markers[$i] = $marker_info;
+					$markers[] = $marker_info;
 					$this_count++;
 				}
 			}
 		}
 	}
-
-	$i++;
 
 }
 

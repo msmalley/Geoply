@@ -10,6 +10,7 @@
 			lng: false,
 			imgs: 'img',
 			markers: false,
+			polygon: false,
 			check_markers: true
         };
 
@@ -63,6 +64,20 @@
 
 		check_markers = this.options.check_markers;
 		ajax = $(map_container).attr('data-ajax');
+
+		if(this.options.polygon!==false){
+			poly_count = 0; poly_array = [];
+			$.each(this.options.polygon, function(key, latlng){
+				lat = false; lng = false;
+				$.each(latlng, function(key, value){
+					if(key==0) lat = value;
+					if(key==1) lng = value;
+				});
+				google_point = new google.maps.LatLng(lat, lng);
+				poly_array[poly_count] = google_point;
+				poly_count++;
+			})
+		}
 
 		if(((adhoc_zoom!==null)&&(adhoc_zoom!==false)&&((!this.options.zoom))||(($(map_container).attr('data-override')=='true')&&(adhoc_zoom)))){
 			this.options.zoom = adhoc_zoom;
@@ -137,6 +152,18 @@
 			debug.log('HTML5 Status = ', html5_status);
 			debug.log('THIS LAT = ', this.options.lat);
 			debug.log('THIS LNG = ', this.options.lng);
+		}
+
+		if(poly_count>0){
+			this_polygon = new google.maps.Polygon({
+				paths: poly_array,
+				strokeColor: "#FF0000",
+				strokeOpacity: 0.5,
+				strokeWeight: 2,
+				fillColor: "#FF0000",
+				fillOpacity: 0.2
+			});
+			this_polygon.setMap(map);
 		}
 
 		adhoc_marker = false;

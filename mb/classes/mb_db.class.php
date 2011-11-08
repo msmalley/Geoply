@@ -184,6 +184,7 @@ class MONGOBASE_DB extends MONGOBASE {
 			'order'		=> false,
 			'id'		=> false,
 			'near'		=> false,
+			'within'	=> false,
 			'distance'	=> 100
 		);
 		$settings = $this->settings($args,$defaults);
@@ -208,16 +209,18 @@ class MONGOBASE_DB extends MONGOBASE {
 
 		try{
 
-			if(isset($settings['near'])){
+			if($this->is_set($settings['near'])){
 
 				$geo_near_query = array('geoNear'=>$settings['col'],'near'=>$settings['near'],'$spherical'=>true,'$maxDistance'=>$settings['distance']/6378,'num'=>$settings['limit']);
 				$geo_results = $dbh->command($geo_near_query);
+				//$result = array(); $result[0]=$geo_results; return $result;
 				foreach($geo_results['results'] as $result){
                     if(is_array($result['obj'])){
                         $temp_geo_results[] = $result['obj'];
                     }
                 } $results = $temp_geo_results;
 				return $results;
+
 
 			}elseif(is_array($settings['col'])){
 
@@ -238,9 +241,23 @@ class MONGOBASE_DB extends MONGOBASE {
 				return $combined_array;
 
 			}else{
-				
+
+				if(isset($settings['within'])){
+					/* NEW WHERE NEEDED */
+					$settings['where'] = array(
+						'loc' => array(
+							'$within' => array(
+								'$polygon' => $settings['within']
+							)
+						)
+					);
+				}
+				//return $settings['where'];
 				$collection = $dbh->$settings['col'];
-				$results = $this->arrayed($collection->find($settings['where'])->sort($sort_clause)->skip($settings['offset'])->limit($settings['limit']));
+				//return $settings['where'];
+				//return $collection->find($settings['where']);
+				//return $collection->find($settings['where'])->timeout(-1)->sort($sort_clause)->skip($settings['offset'])->limit($settings['limit']);
+				$results = $this->arrayed($collection->find($settings['where'])->sort($sort_clause)->skip($settings['offset'])->limit($settings['limit'])->timeout(-1));
 				return $results;
 
 			}

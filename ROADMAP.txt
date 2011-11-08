@@ -1,0 +1,22 @@
+Geoply is currently at version 1.0.2
+
+Some of these future features will be given proper time-lines later, but for
+now, this is just a rough idea of things that need to get done...
+
+Little things to do:
+* Optional AJAX Loader (Cover Screen)
+* More feature_code / icons supported
+* Selection of InfoWindow Styles
+* Options for Individual Marker BGs
+
+Big things to do:
+* OpenStreetMap Support Included
+* Included OpenStreetMap GridFS Storage
+* MapReduce Features / Functions
+* Inclusion of Worldwide Country Polygon Data
+* Route-Support Display / Query
+* WYSIWYG Editor (Polygons, Routes, Points)
+* WYSIWYG Editor for Map Tiles
+
+Most Recently Added:
+* Polygon Support Display / Query

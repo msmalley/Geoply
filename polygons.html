@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+<head>
+
+	<meta charset="utf-8">
+
+	<title>Geoply - The MongoDB Geo-Location Toolkit</title>
+
+	<script src="http://maps.googleapis.com/maps/api/js?sensor=true"></script>
+	<script src="js/jquery-1.6.4.min.js"></script>
+
+	<link rel="stylesheet" href="css/g-spot.css">
+	<script src="js/g-spot.js"></script>
+
+	<!--[if lt IE 9]>
+		<style>.git-ribbon { top: -2em; left: -2em; }</style>
+	<![endif]-->
+
+	<script>
+
+		/* CREATING A MAP IS THIS SIMPLE */
+		polygon = [[3.154346,101.708443],[3.155857,101.721784],[3.147474,101.723233],[3.146322,101.711817],[3.154346,101.708443]];
+		options = { polygon: polygon };
+		$(document).ready(function(){
+			$('#gspot').gSpot(options);
+		});
+
+	</script>
+
+</head>
+<body>
+
+	<div class="git-ribbon"><a href="https://github.com/msmalley/Geoply">Fork Me on GitHub</a></div>
+
+	<div id="header">
+		<h1>Geoply</h1>
+		<span class="social-media-links">
+			<a href="http://twitter.com/m_smalley" class="twitter">Twitter</a>
+			<a href="http://facebook.com/mark.smalley" class="facebook">Facebook</a>
+			<a href="http://www.linkedin.com/profile/view?id=10311122" class="linkedin">Linked-In</a>
+		</span>
+	</div>
+	
+	<div id="map-wrapper">
+
+		<div id="gspot" data-ajax="queries/polygons.php" data-zoom="16" data-override="true"></div>
+
+	</div>
+
+</body>
+</html>

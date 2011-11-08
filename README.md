@@ -1,3 +1,5 @@
+* IMPORTANT - Geoply Requires MongoDB 2.0+
+* ----------------------------------------
 * Geoply is a MongoDB-Based Geo-Location Toolkit
 * Includes 1GB+ DB, MongoBase and gSpot
 * Follow [Mark on Twitter](http://twitter.com/m_smalley) for more updates
@@ -9,9 +11,10 @@
 
 # Advanced and Newly Introduced Features:
 * Ability to have custom icons per marker
-* Use of GeoNames feature_code for icon (5 codes currently supported)
+* Use of GeoNames feature_code for icon (8 codes currently supported)
 * Function for checking if icon exists, else show default icon
 * Query from the URL, with current variables including (limit and feature_code)
+* Polygon Queries and Visual Display of Polygons through gSpot
 
 # Installation Instructions:
 * Ensure MongoDB and Mongo PHP Drivers Working
